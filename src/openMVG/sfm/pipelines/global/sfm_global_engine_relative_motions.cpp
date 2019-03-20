@@ -144,10 +144,13 @@ bool GlobalSfMReconstructionEngine_RelativeMotions::Process() {
     std::cerr << "GlobalSfM:: Cannot initialize an initial structure!" << std::endl;
     return false;
   }
-  if (!Adjust())
+  if(this->b_use_adjust_)
   {
-    std::cerr << "GlobalSfM:: Non-linear adjustment failure!" << std::endl;
-    return false;
+    if (!Adjust())
+    {
+      std::cerr << "GlobalSfM:: Non-linear adjustment failure!" << std::endl;
+      return false;
+    }
   }
 
   //-- Export statistics about the SfM process

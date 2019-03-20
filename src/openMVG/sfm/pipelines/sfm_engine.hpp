@@ -60,6 +60,14 @@ public:
     b_use_motion_prior_ = rhs;
   }
 
+  void Set_Use_Adjust
+  (
+    bool rhs
+  )
+  {
+    b_use_adjust_ = rhs;
+  }
+
   const SfM_Data & Get_SfM_Data() const {return sfm_data_;}
 
 protected:
@@ -75,6 +83,7 @@ protected:
   //-----
   cameras::Intrinsic_Parameter_Type intrinsic_refinement_options_;
   bool b_use_motion_prior_;
+  bool b_use_adjust_;
 };
 
 } // namespace sfm
